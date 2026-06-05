@@ -1,4 +1,5 @@
 import { FiCpu, FiWifi, FiServer, FiTool, FiLayers } from 'react-icons/fi';
+import profileImg from '../assets/new.jpg';
 
 const highlights = [
   { icon: <FiCpu />, text: 'Practical hardware-software integration' },
@@ -17,7 +18,19 @@ export default function About() {
           <h2 className="section-title">Engineering with Purpose</h2>
         </div>
         <div className="about-content fade-in">
-          <div className="about-text">
+          <div className="about-image-container">
+            <div className="about-image-frame">
+              <img src={profileImg} alt="Praveena Kurukuladithya" className="about-image" />
+              <div className="about-image-overlay"></div>
+              <div className="tech-corner corner-tl"></div>
+              <div className="tech-corner corner-tr"></div>
+              <div className="tech-corner corner-bl"></div>
+              <div className="tech-corner corner-br"></div>
+              <div className="tech-grid-overlay"></div>
+            </div>
+          </div>
+          <div className="about-details">
+            <div className="about-text">
             <p>
               I am a Computer Systems Engineering undergraduate at SLIIT with hands-on experience in
               embedded systems, Industrial IoT, robotics, PLC automation, PCB design, and Linux-based
@@ -41,6 +54,7 @@ export default function About() {
           </div>
         </div>
       </div>
+     </div>
     </section>
   );
 }

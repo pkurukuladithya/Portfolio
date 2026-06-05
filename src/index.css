@@ -325,6 +325,143 @@ section { position: relative; z-index: 1; }
   border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 0.85rem;
 }
 
+/* ===== TECH MARQUEE ===== */
+.marquee-container {
+  width: 100%;
+  overflow: hidden;
+  background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.02), transparent);
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  padding: 20px 0;
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+}
+.marquee-container::before,
+.marquee-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 120px;
+  z-index: 2;
+  pointer-events: none;
+}
+.marquee-container::before {
+  left: 0;
+  background: linear-gradient(90deg, var(--bg-primary), transparent);
+}
+.marquee-container::after {
+  right: 0;
+  background: linear-gradient(-90deg, var(--bg-primary), transparent);
+}
+.marquee-content {
+  display: flex;
+  gap: 70px;
+  width: max-content;
+  animation: marquee 35s linear infinite;
+}
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.marquee-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: var(--transition);
+}
+.marquee-item:hover {
+  color: var(--accent-cyan);
+  text-shadow: 0 0 10px rgba(0, 212, 255, 0.4);
+  transform: translateY(-2px);
+}
+.marquee-icon {
+  font-size: 1.5rem;
+  color: var(--accent-cyan);
+  filter: drop-shadow(0 0 5px rgba(0, 212, 255, 0.25));
+}
+
+/* ===== ABOUT IMAGE STYLING ===== */
+.about-image-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  width: 100%;
+}
+.about-image-frame {
+  position: relative;
+  width: 290px;
+  height: 380px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1.5px solid rgba(0, 212, 255, 0.4);
+  box-shadow: 0 0 25px rgba(0, 212, 255, 0.1);
+  transition: var(--transition);
+  z-index: 2;
+}
+.about-image-frame:hover {
+  transform: scale(1.02) rotate(-0.5deg);
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 40px rgba(0, 212, 255, 0.3);
+}
+.about-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.about-image-frame:hover .about-image {
+  transform: scale(1.06);
+}
+.about-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(10, 14, 26, 0.6) 0%, rgba(10, 14, 26, 0) 50%);
+  pointer-events: none;
+}
+.tech-corner {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-color: rgba(0, 212, 255, 0.5);
+  border-style: solid;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), border-color var(--transition);
+  pointer-events: none;
+  z-index: 3;
+}
+.corner-tl { top: -4px; left: -4px; border-width: 2.5px 0 0 2.5px; }
+.corner-tr { top: -4px; right: -4px; border-width: 2.5px 2.5px 0 0; }
+.corner-bl { bottom: -4px; left: -4px; border-width: 0 0 2.5px 2.5px; }
+.corner-br { bottom: -4px; right: -4px; border-width: 0 2.5px 2.5px 0; }
+
+.about-image-container:hover .tech-corner {
+  border-color: var(--accent-cyan);
+}
+.about-image-container:hover .corner-tl { transform: translate(-6px, -6px); }
+.about-image-container:hover .corner-tr { transform: translate(6px, -6px); }
+.about-image-container:hover .corner-bl { transform: translate(-6px, 6px); }
+.about-image-container:hover .corner-br { transform: translate(6px, 6px); }
+
+.tech-grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
+  background-size: 15px 15px;
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 1;
+}
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
   .navbar-links { display: none; flex-direction: column; position: absolute; top: 70px; left: 0; right: 0; background: var(--bg-secondary); padding: 24px; gap: 16px; border-bottom: 1px solid var(--border-color); }
