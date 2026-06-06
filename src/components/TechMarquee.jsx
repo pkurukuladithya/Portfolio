@@ -14,18 +14,18 @@ import {
 import { FiCpu } from 'react-icons/fi';
 
 const marqueeItems = [
-  { name: 'ESP32', icon: FiCpu },
-  { name: 'Raspberry Pi', icon: SiRaspberrypi },
-  { name: 'Arduino', icon: SiArduino },
-  { name: 'Siemens PLC', icon: SiSiemens },
-  { name: 'Python', icon: SiPython },
-  { name: 'C++', icon: SiCplusplus },
-  { name: 'Docker', icon: SiDocker },
-  { name: 'React', icon: SiReact },
-  { name: 'Linux', icon: SiLinux },
-  { name: 'Git', icon: SiGit },
-  { name: 'Flask', icon: SiFlask },
-  { name: 'FastAPI', icon: SiFastapi },
+  { name: 'ESP32', icon: FiCpu, color: '#E7352C' },
+  { name: 'Raspberry Pi', icon: SiRaspberrypi, color: '#C51A4A' },
+  { name: 'Arduino', icon: SiArduino, color: '#00979D' },
+  { name: 'Siemens PLC', icon: SiSiemens, color: '#005F60' },
+  { name: 'Python', icon: SiPython, color: '#3776AB' },
+  { name: 'C++', icon: SiCplusplus, color: '#00599C' },
+  { name: 'Docker', icon: SiDocker, color: '#2496ED' },
+  { name: 'React', icon: SiReact, color: '#61DAFB' },
+  { name: 'Linux', icon: SiLinux, color: '#FCC624' },
+  { name: 'Git', icon: SiGit, color: '#F05032' },
+  { name: 'Flask', icon: SiFlask, color: '#FFFFFF' },
+  { name: 'FastAPI', icon: SiFastapi, color: '#009688' },
 ];
 
 export default function TechMarquee() {
@@ -39,8 +39,8 @@ export default function TechMarquee() {
           const Icon = item.icon;
           return (
             <div className="marquee-item" key={idx}>
-              <Icon className="marquee-icon" />
-              <span>{item.name}</span>
+              <Icon className="marquee-icon" style={{ color: item.color }} />
+              <span className="marquee-text">{item.name}</span>
             </div>
           );
         })}
@@ -48,3 +48,4 @@ export default function TechMarquee() {
     </div>
   );
 }
+

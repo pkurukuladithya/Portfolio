@@ -34,7 +34,8 @@ export default function Navbar() {
     <nav className={`navbar${scrolled ? ' scrolled' : ''}`}>
       <div className="container navbar-inner">
         <a href="#home" className="navbar-logo">
-          P<span>K</span>
+          <span className="logo-desktop">Praveena Kurukuladithya</span>
+          <span className="logo-mobile">Praveena K.</span>
         </a>
         <div className={`navbar-links${menuOpen ? ' open' : ''}`}>
           {navLinks.map((link) => (

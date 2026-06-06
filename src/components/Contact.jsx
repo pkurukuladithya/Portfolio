@@ -10,27 +10,28 @@ const contacts = [
 
 export default function Contact() {
   return (
-    <section className="section" id="contact">
+    <section className="section contact-section" id="contact">
       <div className="container">
-        <h2 className="contact-heading">Let's Build Practical Engineering Systems</h2>
-        <p className="contact-subtext">
-          I am open to internship opportunities in Embedded Systems, IoT, Robotics, Industrial
-          Automation, and Computer Systems Engineering.
-        </p>
+        <div className="section-header">
+          <span className="section-label">Contact</span>
+          <h2 className="section-title">Let's Build Practical <span>Engineering</span> Systems</h2>
+          <p className="section-subtitle">
+            I am open to internship opportunities in Embedded Systems, IoT, Robotics, Industrial
+            Automation, and Computer Systems Engineering.
+          </p>
+        </div>
         <div className="contact-grid">
           {contacts.map((c, i) => (
-            <div className="contact-card fade-in" key={i}>
+            <div className="card contact-card fade-in visible" key={i}>
               <div className="contact-card-icon">{c.icon}</div>
-              <div className="contact-card-info">
-                <h4>{c.label}</h4>
-                {c.href ? (
-                  <a href={c.href} target={c.href.startsWith('http') ? '_blank' : undefined} rel="noopener noreferrer">
-                    {c.value}
-                  </a>
-                ) : (
-                  <p>{c.value}</p>
-                )}
-              </div>
+              <h4>{c.label}</h4>
+              {c.href ? (
+                <a href={c.href} target={c.href.startsWith('http') ? '_blank' : undefined} rel="noopener noreferrer">
+                  {c.value}
+                </a>
+              ) : (
+                <p>{c.value}</p>
+              )}
             </div>
           ))}
         </div>
