@@ -28,25 +28,40 @@
 
 /* ===== RESET & BASE ===== */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+  overflow-x: hidden;
+  background-color: var(--bg-primary);
+}
 body {
   font-family: var(--font-body);
-  background: 
-    linear-gradient(rgba(10, 14, 26, 0.93), rgba(10, 14, 26, 0.93)),
-    url('/images/circuit_bg.png') center/cover no-repeat fixed;
   color: var(--text-primary);
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  background: transparent;
 }
 body::before {
   content: '';
-  position: fixed; inset: 0;
+  position: fixed;
+  inset: 0;
+  background: 
+    linear-gradient(rgba(10, 14, 26, 0.93), rgba(10, 14, 26, 0.93)),
+    url('/images/circuit_bg.png') center/cover no-repeat;
+  z-index: -2;
+  pointer-events: none;
+}
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
   background-image:
     linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
     linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
   background-size: 60px 60px;
-  pointer-events: none; z-index: 0;
+  pointer-events: none;
+  z-index: -1;
 }
 a { color: var(--accent-cyan); text-decoration: none; transition: var(--transition); }
 a:hover { color: #33e0ff; }
@@ -786,6 +801,7 @@ section { position: relative; z-index: 1; }
   .section { padding: 40px 0; }
   .hero { min-height: auto; padding-top: 90px; padding-bottom: 30px; }
   .hero-visual-container { margin: 10px auto 10px; }
+  .hero-photo-container { max-width: 290px; }
   .hero-name-behind { font-size: clamp(1.4rem, 8vw, 2.2rem); }
   .hero-focus-grid { flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 20px; }
   .logo-desktop { display: none; }
@@ -799,6 +815,7 @@ section { position: relative; z-index: 1; }
 }
 @media (max-width: 480px) {
   .container { padding: 0 16px; }
+  .hero-photo-container { max-width: 250px; }
   .hero-buttons { flex-direction: column; }
   .hero-buttons .btn { width: 100%; justify-content: center; }
 }
