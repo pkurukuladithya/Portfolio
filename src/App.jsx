@@ -10,6 +10,7 @@ import Education from './components/Education';
 import Certifications from './components/Certifications';
 import Leadership from './components/Leadership';
 import CVDownload from './components/CVDownload';
+import Memories from './components/Memories';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 
@@ -44,6 +45,7 @@ export default function App() {
       <Certifications />
       <Leadership />
       <CVDownload />
+      <Memories />
       <Contact />
       <Footer />
     </>
