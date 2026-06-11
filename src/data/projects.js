@@ -13,7 +13,7 @@ export const projects = [
       'Planned AI/ML-based fault prediction workflow for abnormal machine behavior detection.',
       'Included IoT dashboard control, motor/actuator control, Docker deployment, MQTT communication, and PCB-level integration.',
     ],
-    github: 'https://github.com/pkurukuladithya',
+    github: 'https://github.com/pkurukuladithya/IIoT',
     // Case study data
     caseStudy: {
       problem:
@@ -58,7 +58,7 @@ export const projects = [
       'Implemented real-time PID control in Python with anti-windup, dynamic delta-time calculation, and PWM control.',
       'Applied DSP moving-average filtering to reduce encoder quantization noise and automated data logging using pandas, matplotlib, and scipy.',
     ],
-    github: 'https://github.com/pkurukuladithya',
+    github: 'https://github.com/pkurukuladithya/cse',
     caseStudy: {
       problem:
         'A DC motor needs stable speed control under real hardware limitations such as encoder noise, timing jitter, and mechanical non-idealities.',
