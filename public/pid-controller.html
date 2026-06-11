@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IIoT SCADA & Real-Time Motor Control System</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: '#111827',
+            coal: '#1F2937',
+            steel: '#475569',
+            line: '#CBD5E1',
+            paper: '#F8FAFC',
+            amber: '#B91C1C', /* Using Red/Amber mapping for PID theme */
+            amberSoft: '#FEE2E2',
+            green: '#166534',
+            red: '#B91C1C'
+          },
+          boxShadow: {
+            soft: '0 18px 45px rgba(15, 23, 42, 0.08)'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    .mono { font-family: "IBM Plex Mono", Consolas, Monaco, monospace; }
+    .soft-grid {
+      background-image: linear-gradient(#e5e7eb 1px, transparent 1px), linear-gradient(90deg, #e5e7eb 1px, transparent 1px);
+      background-size: 36px 36px;
+    }
+    .flow-line::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 100%;
+      width: 2px;
+      height: 34px;
+      background: #CBD5E1;
+    }
+    @media (min-width: 1024px) {
+      .flow-line::after {
+        left: 100%;
+        top: 50%;
+        width: 55px;
+        height: 2px;
+      }
+    }
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .marquee-container {
+      display: flex;
+      width: max-content;
+      animation: marquee 30s linear infinite;
+    }
+    .marquee-container:hover {
+      animation-play-state: paused;
+    }
+  </style>
+</head>
+<body class="bg-white text-ink">
+  <!-- NAVBAR -->
+  <header class="sticky top-0 z-50 border-b border-slate-200 bg-white/92 backdrop-blur">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4">
+      <a href="#home" class="flex items-center gap-3">
+        <div class="flex h-11 w-11 items-center justify-center rounded-xl border border-slate-300 bg-white shadow-sm">
+          <svg viewBox="0 0 48 48" class="h-7 w-7" fill="none" aria-hidden="true">
+            <circle cx="24" cy="24" r="18" stroke="#111827" stroke-width="3" />
+            <path d="M16 24h16M24 16v16" stroke="#B91C1C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </div>
+        <div>
+          <p class="text-lg font-black tracking-tight">PID <span class="text-amber">Control SCADA</span></p>
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">IIoT Motor System</p>
+        </div>
+      </a>
+      <nav class="hidden items-center gap-7 text-sm font-semibold text-slate-600 lg:flex">
+        <a href="#summary" class="hover:text-amber">Overview</a>
+        <a href="#achievements" class="hover:text-amber">Engineering Features</a>
+        <a href="#tech" class="hover:text-amber">Tech Stack</a>
+      </nav>
+      <a href="/#projects" class="rounded-full bg-ink px-5 py-2 text-sm font-bold text-white shadow-sm hover:bg-coal">Back to Portfolio</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main id="home">
+    <section class="relative overflow-hidden bg-paper soft-grid">
+      <div class="absolute inset-0 bg-gradient-to-b from-white/90 via-white/80 to-paper"></div>
+      <div class="relative mx-auto grid max-w-7xl items-center gap-12 px-5 py-20 lg:grid-cols-[1.05fr_0.95fr] lg:py-28">
+        <div>
+          <div class="mb-5 inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-bold text-slate-700 shadow-sm">
+            <span class="h-2.5 w-2.5 rounded-full bg-green"></span>
+            CSE3034 · Control Systems Engineering
+          </div>
+          <h1 class="max-w-4xl text-5xl font-black leading-tight tracking-tight text-ink md:text-7xl">
+            IIoT SCADA & <span class="text-amber">Motor Control</span>
+          </h1>
+          <p class="mt-5 max-w-3xl text-2xl font-bold leading-snug text-slate-800 md:text-3xl">
+            Real-Time PID Systems & Signal Processing
+          </p>
+          <p class="mt-6 max-w-3xl text-lg leading-8 text-slate-600">
+            Designed, developed, and deployed a complete closed-loop Industrial IoT motor control system. The project encompassed mathematical system modeling, real-time PID algorithm implementation in Python, digital signal processing (DSP), and a live bidirectional SCADA web dashboard.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <span class="rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-bold text-slate-700">Control Systems</span>
+            <span class="rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-bold text-slate-700">Embedded Python</span>
+            <span class="rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-bold text-slate-700">DSP</span>
+            <span class="rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-bold text-slate-700">SCADA / Flask</span>
+          </div>
+          <div class="mt-10 flex flex-wrap gap-4">
+            <a href="#achievements" class="rounded-xl bg-ink px-6 py-3 font-bold text-white shadow-soft hover:bg-coal">View Achievements</a>
+            <a href="https://github.com/pkurukuladithya/cse" target="_blank" rel="noopener noreferrer" class="rounded-xl border border-slate-300 bg-white px-6 py-3 font-bold text-ink hover:border-amber hover:text-amber flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+              GitHub
+            </a>
+            <a href="/images/p2/PID_Control_Report.pdf" target="_blank" rel="noopener noreferrer" class="rounded-xl bg-amber px-6 py-3 font-bold text-white shadow-soft hover:bg-red transition-colors flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+              Full Report
+            </a>
+            <a href="https://youtu.be/PzMPnsz8-GM" target="_blank" rel="noopener noreferrer" class="rounded-xl border border-slate-300 bg-white px-6 py-3 font-bold text-ink shadow-soft hover:bg-slate-50 transition-colors flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#FF0000"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+              Demo Video
+            </a>
+          </div>
+        </div>
+
+        <div class="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-soft">
+          <div class="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-6">
+            <div class="flex items-center justify-between border-b border-slate-200 pb-4">
+              <div>
+                <p class="text-sm font-bold uppercase tracking-[0.25em] text-slate-500">Live Telemetry</p>
+                <p class="mt-1 text-2xl font-black">Performance Metrics</p>
+              </div>
+              <span class="rounded-full bg-green px-4 py-2 text-sm font-black text-white">STABLE</span>
+            </div>
+            <div class="mt-6 grid grid-cols-2 gap-4">
+              <div class="rounded-2xl border border-slate-200 bg-white p-4">
+                <p class="text-xs font-bold uppercase tracking-wider text-slate-500">Settling Time</p>
+                <p class="mt-2 text-3xl font-black">1.82</p>
+                <p class="text-sm text-slate-500">Seconds</p>
+              </div>
+              <div class="rounded-2xl border border-slate-200 bg-white p-4">
+                <p class="text-xs font-bold uppercase tracking-wider text-slate-500">Overshoot</p>
+                <p class="mt-2 text-3xl font-black">0.8</p>
+                <p class="text-sm text-slate-500">Percent (%)</p>
+              </div>
+              <div class="rounded-2xl border border-slate-200 bg-white p-4">
+                <p class="text-xs font-bold uppercase tracking-wider text-slate-500">Steady-State Error</p>
+                <p class="mt-2 text-3xl font-black">0.0</p>
+                <p class="text-sm text-slate-500">Percent (%)</p>
+              </div>
+              <div class="rounded-2xl border border-slate-200 bg-white p-4">
+                <p class="text-xs font-bold uppercase tracking-wider text-slate-500">Transfer Function</p>
+                <p class="mt-2 text-xl font-black">G(s)</p>
+                <p class="text-xs text-slate-500">0.843 / (0.076s + 1)</p>
+              </div>
+            </div>
+            <div class="mt-6 rounded-2xl bg-ink p-5 text-white">
+              <p class="text-xs font-bold uppercase tracking-[0.2em] text-slate-300">Robustness</p>
+              <p class="mono mt-3 text-sm leading-7 text-slate-100">Successfully overcame OS jitter, quantization noise, and mechanical stiction.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIDEO SHOWCASE -->
+    <section class="mx-auto max-w-6xl px-5 py-12 relative z-20 -mt-8">
+      <div class="rounded-[2rem] border border-slate-200 bg-white p-3 shadow-2xl transition-transform hover:scale-[1.01] duration-500">
+        <div class="relative w-full overflow-hidden rounded-[1.5rem] bg-ink" style="padding-top: 56.25%;">
+          <iframe 
+            src="https://www.youtube.com/embed/PzMPnsz8-GM?autoplay=1&mute=1&loop=1&playlist=PzMPnsz8-GM" 
+            title="PID Controller Demo Video" 
+            class="absolute top-0 left-0 w-full h-full border-0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- IMAGE MARQUEE GALLERY -->
+    <section class="py-16 bg-white border-y border-slate-200 overflow-hidden shadow-inner">
+      <div class="marquee-container gap-8 px-8">
+        <div class="flex gap-8 shrink-0 items-center">
+          <img src="/images/pid-scada/gallery/IMG_7366.jpg" class="h-80 lg:h-96 w-auto rounded-3xl object-cover shadow-lg border border-slate-200 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:z-10 relative cursor-pointer" alt="Hardware Setup">
+          <img src="/images/pid-scada/gallery/IMG_7453.jpg" class="h-80 lg:h-96 w-auto rounded-3xl object-cover shadow-lg border border-slate-200 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:z-10 relative cursor-pointer" alt="Motor Details">
+          <img src="/images/pid-scada/gallery/IMG_7455.jpg" class="h-80 lg:h-96 w-auto rounded-3xl object-cover shadow-lg border border-slate-200 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:z-10 relative cursor-pointer" alt="Hardware Circuit">
+          <img src="/images/pid-scada/gallery/IMG_7461.jpg" class="h-80 lg:h-96 w-auto rounded-3xl object-cover shadow-lg border border-slate-200 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:z-10 relative cursor-pointer" alt="Raspberry Pi">
+          <img src="/images/pid-scada/gallery/IMG_7472.jpg" class="h-80 lg:h-96 w-auto rounded-3xl object-cover shadow-lg border border-slate-200 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:z-10 relative cursor-pointer" alt="Test Bench">
+        </div>
+        <div class="flex gap-8 shrink-0 items-center">
+          <img src="/images/pid-scada/gallery/IMG_7366.jpg" class="h-80 lg:h-96 w-auto rounded-3xl object-cover shadow-lg border border-slate-200 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:z-10 relative cursor-pointer" alt="Hardware Setup">
+          <img src="/images/pid-scada/gallery/IMG_7453.jpg" class="h-80 lg:h-96 w-auto rounded-3xl object-cover shadow-lg border border-slate-200 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:z-10 relative cursor-pointer" alt="Motor Details">
+          <img src="/images/pid-scada/gallery/IMG_7455.jpg" class="h-80 lg:h-96 w-auto rounded-3xl object-cover shadow-lg border border-slate-200 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:z-10 relative cursor-pointer" alt="Hardware Circuit">
+          <img src="/images/pid-scada/gallery/IMG_7461.jpg" class="h-80 lg:h-96 w-auto rounded-3xl object-cover shadow-lg border border-slate-200 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:z-10 relative cursor-pointer" alt="Raspberry Pi">
+          <img src="/images/pid-scada/gallery/IMG_7472.jpg" class="h-80 lg:h-96 w-auto rounded-3xl object-cover shadow-lg border border-slate-200 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:z-10 relative cursor-pointer" alt="Test Bench">
+        </div>
+        <div class="flex gap-8 shrink-0 items-center">
+          <img src="/images/pid-scada/gallery/IMG_7366.jpg" class="h-80 lg:h-96 w-auto rounded-3xl object-cover shadow-lg border border-slate-200 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:z-10 relative cursor-pointer" alt="Hardware Setup">
+          <img src="/images/pid-scada/gallery/IMG_7453.jpg" class="h-80 lg:h-96 w-auto rounded-3xl object-cover shadow-lg border border-slate-200 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:z-10 relative cursor-pointer" alt="Motor Details">
+          <img src="/images/pid-scada/gallery/IMG_7455.jpg" class="h-80 lg:h-96 w-auto rounded-3xl object-cover shadow-lg border border-slate-200 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:z-10 relative cursor-pointer" alt="Hardware Circuit">
+          <img src="/images/pid-scada/gallery/IMG_7461.jpg" class="h-80 lg:h-96 w-auto rounded-3xl object-cover shadow-lg border border-slate-200 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:z-10 relative cursor-pointer" alt="Raspberry Pi">
+          <img src="/images/pid-scada/gallery/IMG_7472.jpg" class="h-80 lg:h-96 w-auto rounded-3xl object-cover shadow-lg border border-slate-200 transition-transform hover:scale-105 hover:shadow-2xl hover:z-10 relative cursor-pointer" alt="Test Bench">
+        </div>
+      </div>
+    </section>
+
+    <!-- ACHIEVEMENTS -->
+    <section id="achievements" class="bg-paper py-20">
+      <div class="mx-auto max-w-7xl px-5">
+        <div class="text-center">
+          <p class="text-sm font-black uppercase tracking-[0.25em] text-amber">Engineering Bullet Points</p>
+          <h2 class="mt-3 text-4xl font-black tracking-tight md:text-5xl">Key Technical Achievements</h2>
+          <p class="mx-auto mt-5 max-w-3xl text-lg leading-8 text-slate-600">This project addresses real-world control challenges—bridging the gap between mathematical simulation and physical hardware deployment.</p>
+        </div>
+
+        <div class="mt-14 grid gap-16 lg:grid-cols-2 lg:gap-12">
+          
+          <!-- Box 1 -->
+          <div class="relative rounded-3xl border border-slate-200 bg-white p-8 shadow-soft">
+            <h3 class="mt-3 text-2xl font-black">1. System Modeling & Open-Loop Characterization</h3>
+            <ul class="mt-5 space-y-4 text-slate-600">
+              <li class="flex gap-3"><span class="mt-2 h-2 w-2 rounded-full bg-amber shrink-0"></span>Designed hardware testing protocols to empirically derive the first-order mathematical transfer function of a physical DC motor.</li>
+              <li class="flex gap-3"><span class="mt-2 h-2 w-2 rounded-full bg-amber shrink-0"></span>Configured hardware-level GPIO interrupts to process high-frequency telemetry from a 700-PPR optical encoder operating at a strict 50ms sampling rate.</li>
+            </ul>
+          </div>
+
+          <!-- Box 2 -->
+          <div class="relative rounded-3xl border border-slate-200 bg-white p-8 shadow-soft">
+            <h3 class="mt-3 text-2xl font-black">2. Full-Stack SCADA Dashboard Implementation</h3>
+            <ul class="mt-5 space-y-4 text-slate-600">
+              <li class="flex gap-3"><span class="mt-2 h-2 w-2 rounded-full bg-amber shrink-0"></span>Developed a real-time web-based SCADA interface using Flask and Chart.js, allowing remote bidirectional tuning of PID parameters (Kp, Ki, Kd) and target setpoints over a network.</li>
+              <li class="flex gap-3"><span class="mt-2 h-2 w-2 rounded-full bg-amber shrink-0"></span>Engineered a live heads-up display (HUD) that dynamically calculates and displays critical control metrics (Settling Time, Max Overshoot, Steady-State Error) in real-time.</li>
+            </ul>
+          </div>
+
+          <!-- Box 3 -->
+          <div class="relative rounded-3xl border border-slate-200 bg-white p-8 shadow-soft">
+            <h3 class="mt-3 text-2xl font-black">3. Digital Signal Processing & Embedded Optimization</h3>
+            <ul class="mt-5 space-y-4 text-slate-600">
+              <li class="flex gap-3"><span class="mt-2 h-2 w-2 rounded-full bg-amber shrink-0"></span>Designed and implemented a 10-point centered moving average filter to eliminate sensor quantization noise, preventing "derivative kick" and violent PWM oscillations.</li>
+              <li class="flex gap-3"><span class="mt-2 h-2 w-2 rounded-full bg-amber shrink-0"></span>Compensated for non-RTOS Linux CPU scheduling jitter (measured at 1.88ms maximum variance) by programming a dynamic delta-time (dt) calculation into the control loop.</li>
+            </ul>
+          </div>
+
+          <!-- Box 4 -->
+          <div class="relative rounded-3xl border border-amber bg-amberSoft p-8 shadow-soft">
+            <h3 class="mt-3 text-2xl font-black text-amber">4. Advanced PID Control & Robustness</h3>
+            <ul class="mt-5 space-y-4 text-slate-700">
+              <li class="flex gap-3"><span class="mt-2 h-2 w-2 rounded-full bg-amber shrink-0"></span>Executed a heuristic tuning methodology to optimize the controller (Kp=0.5, Ki=1.6, Kd=0.01), exceeding all project constraints to achieve a 1.82s settling time, 0.8% maximum overshoot, and 0.0% steady-state error.</li>
+              <li class="flex gap-3"><span class="mt-2 h-2 w-2 rounded-full bg-amber shrink-0"></span>Engineered an Anti-Windup algorithm (integral accumulator clamped at ±200) to prevent system instability during physical stalling and aggressive setpoint step-downs.</li>
+              <li class="flex gap-3"><span class="mt-2 h-2 w-2 rounded-full bg-amber shrink-0"></span>Validated system robustness through physical load disturbance testing and automated multi-setpoint trajectory tracking (staircase testing).</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- DATA ENGINEERING -->
+    <section id="data-engineering" class="mx-auto max-w-7xl px-5 py-20">
+      <div class="grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
+        <div>
+          <p class="text-sm font-black uppercase tracking-[0.25em] text-amber">Analysis & Evaluation</p>
+          <h2 class="mt-3 text-4xl font-black tracking-tight">5. Data Engineering & Performance Analysis</h2>
+          <p class="mt-6 text-lg leading-8 text-slate-600">Robustness is proven through rigorous mathematical and empirical analysis, comparing ideal theory against imperfect physical hardware.</p>
+        </div>
+        <div class="space-y-5">
+          <div class="rounded-3xl border border-slate-200 p-6 shadow-soft">
+            <h3 class="font-black text-xl">Automated Python Data-Logging</h3>
+            <p class="mt-2 text-slate-600">Authored automated Python data-logging and graphing scripts using pandas and matplotlib to generate publication-ready step-response and trajectory charts.</p>
+          </div>
+          <div class="rounded-3xl border border-slate-200 p-6 shadow-soft">
+            <h3 class="font-black text-xl">Scipy.Signal Simulations</h3>
+            <p class="mt-2 text-slate-600">Conducted advanced performance evaluations by running mathematical simulations via scipy.signal and overlaying the theoretical data against empirical hardware responses to analyze system non-idealities (saturation, mechanical stiction).</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TECH STACK -->
+    <section id="tech" class="mx-auto max-w-7xl px-5 py-20 bg-white border-t border-slate-200">
+      <p class="text-sm font-black uppercase tracking-[0.25em] text-amber">Technical Foundation</p>
+      <h2 class="mt-3 text-4xl font-black tracking-tight">Stack & Tools</h2>
+      <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+        <div class="rounded-3xl border border-slate-200 p-6 shadow-soft"><h3 class="font-black">Python, JS, HTML/CSS</h3><p class="mt-2 text-sm text-slate-600">Core languages for backend control loops and SCADA web frontend.</p></div>
+        <div class="rounded-3xl border border-slate-200 p-6 shadow-soft"><h3 class="font-black">Raspberry Pi & TB6612FNG</h3><p class="mt-2 text-sm text-slate-600">Hardware computing layer and dual-motor driver for precise PWM actuation.</p></div>
+        <div class="rounded-3xl border border-slate-200 p-6 shadow-soft"><h3 class="font-black">6V N20 & 700-PPR Encoder</h3><p class="mt-2 text-sm text-slate-600">Physical plant featuring high-resolution optical feedback.</p></div>
+        <div class="rounded-3xl border border-slate-200 p-6 shadow-soft"><h3 class="font-black">pigpio</h3><p class="mt-2 text-sm text-slate-600">Hardware-level interrupts and precision PWM in Linux.</p></div>
+        <div class="rounded-3xl border border-slate-200 p-6 shadow-soft"><h3 class="font-black">Flask & Chart.js</h3><p class="mt-2 text-sm text-slate-600">Bidirectional REST API and live real-time dashboard plotting.</p></div>
+        <div class="rounded-3xl border border-slate-200 p-6 shadow-soft"><h3 class="font-black">pandas, matplotlib, scipy</h3><p class="mt-2 text-sm text-slate-600">Data science stack used for analyzing step responses and applying DSP algorithms.</p></div>
+        <div class="rounded-3xl border border-slate-200 p-6 shadow-soft"><h3 class="font-black">Control Systems</h3><p class="mt-2 text-sm text-slate-600">PID tuning, anti-windup, transfer functions, and timing jitter compensation.</p></div>
+        <div class="rounded-3xl border border-slate-200 p-6 shadow-soft"><h3 class="font-black">Digital Signal Processing</h3><p class="mt-2 text-sm text-slate-600">Centered moving average filters to suppress quantization noise.</p></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer id="contact" class="border-t border-slate-200 bg-ink text-white">
+    <div class="mx-auto grid max-w-7xl gap-8 px-5 py-12 lg:grid-cols-[1fr_auto] lg:items-center">
+      <div>
+        <h2 class="text-3xl font-black">PID <span class="text-amber">Control SCADA</span></h2>
+        <p class="mt-3 max-w-2xl text-slate-300">Industrial Motor Health Monitoring & Smart PLC Control System · Built by Praveena Kurukuladithya · 2026</p>
+      </div>
+      <div class="flex flex-wrap gap-3">
+        <a href="https://github.com/pkurukuladithya/cse" target="_blank" rel="noopener noreferrer" class="rounded-xl bg-white px-5 py-3 font-bold text-ink hover:bg-slate-200 flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+          GitHub
+        </a>
+        <a href="/images/p2/PID_Control_Report.pdf" target="_blank" rel="noopener noreferrer" class="rounded-xl border border-white/20 bg-amber px-5 py-3 font-bold text-white hover:bg-red flex items-center gap-2 transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+          Full Report
+        </a>
+        <a href="https://youtu.be/PzMPnsz8-GM" target="_blank" rel="noopener noreferrer" class="rounded-xl border border-white/20 px-5 py-3 font-bold text-white hover:bg-white/10 flex items-center gap-2 transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#FF0000"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+          Demo Video
+        </a>
+        <a href="/" class="rounded-xl border border-white/20 px-5 py-3 font-bold text-white hover:bg-white/10">Portfolio Home</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

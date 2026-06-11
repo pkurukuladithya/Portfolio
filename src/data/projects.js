@@ -1,11 +1,12 @@
 export const projects = [
   {
     id: 1,
-    title: 'IIoT Predictive Maintenance System',
-    image: '/images/predictive-maintenance.png',
-    tech: ['ESP32', 'Raspberry Pi', 'AI/ML', 'Docker', 'MQTT', 'IoT Dashboard', 'Sensors', 'PCB'],
+    title: 'EdgePulse IIoT',
+    image: '/images/edgepulse.jpg',
+    pageLink: '/edgepulse.html',
+    tech: ['ESP32', 'Raspberry Pi', 'Docker', 'MQTT', 'InfluxDB', 'React', 'PCB Design', 'PLC'],
     shortDescription:
-      'Industrial IoT predictive maintenance system designed to monitor machine health using sensor data, edge processing, and dashboard-based control.',
+      'A complete engineering prototype that connects embedded hardware, custom PCB design, PLC-style control, MQTT telemetry, a Raspberry Pi edge server, and a web dashboard for industrial machine monitoring.',
     highlights: [
       'Designed an IIoT architecture using ESP32 as the embedded controller and Raspberry Pi as the edge computing layer.',
       'Integrated vibration, temperature, and current sensing concepts for machine-condition monitoring.',
@@ -45,6 +46,8 @@ export const projects = [
     id: 2,
     title: 'PID Motor Control System & IIoT SCADA',
     image: '/images/pid-scada.png',
+    pageLink: '/pid-controller.html',
+    youtube: 'https://youtu.be/PzMPnsz8-GM',
     tech: ['Raspberry Pi', 'Python', 'Flask', 'Chart.js', 'PID', 'Encoder', 'TB6612FNG', 'DSP'],
     shortDescription:
       'Closed-loop DC motor speed control system with Raspberry Pi, encoder feedback, real-time PID tuning, and a live IIoT SCADA dashboard.',
@@ -81,6 +84,45 @@ export const projects = [
         'DSP Filtering',
         'Data Logging',
         'Hardware Testing',
+      ],
+    },
+  },
+  {
+    id: 5,
+    title: 'LittleGurd — Smart Bag IoT Monitoring System',
+    image: '/images/littlegurd.png',
+    pageLink: 'https://smart-bag-iot-dashboard.vercel.app/',
+    tech: ['React.js', 'Vite', 'Supabase', 'Python', 'Tkinter', 'IoT'],
+    shortDescription:
+      'A smart IoT school bag monitoring system with a Python hardware simulator and a real-time React & Supabase cloud dashboard.',
+    highlights: [
+      'Developed a Python Tkinter hardware simulator to generate live GPS, weight, zip, and battery data.',
+      'Built a real-time React and Vite web dashboard with Supabase backend for instant telemetry updates.',
+      'Implemented secure cloud database storage and market-ready UI branding for managing multiple smart bags.',
+      'Engineered live alert detection for conditions such as zip open, bag not worn, heavy bag, and low battery.',
+      'Designed end-to-end architecture preparing for real ESP32/STM32 hardware integration and future React Native mobile app.',
+    ],
+    github: 'https://github.com/pkurukuladithya/smart-bag-iot-dashboard',
+    caseStudy: {
+      problem:
+        'Special school children need real-time safety monitoring of their belongings and location to give parents peace of mind.',
+      solution:
+        'An end-to-end IoT system connecting a simulated smart bag to a live React web dashboard using Supabase Realtime.',
+      architecture: [
+        'Hardware Simulator (Python)',
+        'GPS & Weight Sensors',
+        'Supabase PostgreSQL DB',
+        'Supabase Realtime Cloud',
+        'React.js Dashboard',
+        'Vercel Hosting',
+      ],
+      skills: [
+        'React & Vite',
+        'Supabase & PostgreSQL',
+        'Python Tkinter',
+        'IoT Telemetry',
+        'Real-time Data Streaming',
+        'UI/UX Design',
       ],
     },
   },

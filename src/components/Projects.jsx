@@ -1,4 +1,4 @@
-import { FiGithub, FiExternalLink } from 'react-icons/fi';
+import { FiGithub, FiExternalLink, FiYoutube } from 'react-icons/fi';
 import { projects } from '../data/projects';
 
 export default function Projects() {
@@ -20,7 +20,8 @@ export default function Projects() {
                 <div className="project-overlay">
                   <div className="project-links">
                     <a href={p.github} target="_blank" rel="noopener noreferrer"><FiGithub /></a>
-                    <a href="#case-studies"><FiExternalLink /></a>
+                    {p.youtube && <a href={p.youtube} target="_blank" rel="noopener noreferrer" style={{ color: '#ff0000' }}><FiYoutube /></a>}
+                    <a href={p.pageLink || "#case-studies"}><FiExternalLink /></a>
                   </div>
                 </div>
               </div>

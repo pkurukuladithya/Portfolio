@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EdgePulse IIoT | Industrial Motor Health Monitoring</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: '#111827',
+            coal: '#1F2937',
+            steel: '#475569',
+            line: '#CBD5E1',
+            paper: '#F8FAFC',
+            amber: '#C77A00',
+            amberSoft: '#FFF7E6',
+            green: '#166534',
+            red: '#B91C1C'
+          },
+          boxShadow: {
+            soft: '0 18px 45px rgba(15, 23, 42, 0.08)'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    .mono { font-family: "IBM Plex Mono", Consolas, Monaco, monospace; }
+    .soft-grid {
+      background-image: linear-gradient(#e5e7eb 1px, transparent 1px), linear-gradient(90deg, #e5e7eb 1px, transparent 1px);
+      background-size: 36px 36px;
+    }
+    .flow-line::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 100%;
+      width: 2px;
+      height: 34px;
+      background: #CBD5E1;
+    }
+    @media (min-width: 1024px) {
+      .flow-line::after {
+        left: 100%;
+        top: 50%;
+        width: 55px;
+        height: 2px;
+      }
+    }
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .marquee-container {
+      display: flex;
+      width: max-content;
+      animation: marquee 50s linear infinite;
+    }
+    .marquee-container:hover {
+      animation-play-state: paused;
+    }
+  </style>
+</head>
+<body class="bg-white text-ink">
+  <!-- NAVBAR -->
+  <header class="sticky top-0 z-50 border-b border-slate-200 bg-white/92 backdrop-blur">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4">
+      <a href="#home" class="flex items-center gap-3">
+        <div class="flex h-11 w-11 items-center justify-center rounded-xl border border-slate-300 bg-white shadow-sm">
+          <svg viewBox="0 0 48 48" class="h-7 w-7" fill="none" aria-hidden="true">
+            <circle cx="24" cy="24" r="18" stroke="#111827" stroke-width="3" />
+            <path d="M9 25h7l4-8 7 18 4-10h8" stroke="#C77A00" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </div>
+        <div>
+          <p class="text-lg font-black tracking-tight">EdgePulse <span class="text-amber">IIoT</span></p>
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">Industrial Edge System</p>
+        </div>
+      </a>
+      <nav class="hidden items-center gap-7 text-sm font-semibold text-slate-600 lg:flex">
+        <a href="#idea" class="hover:text-amber">Idea</a>
+        <a href="#layers" class="hover:text-amber">Layers</a>
+        <a href="#hardware" class="hover:text-amber">Hardware</a>
+        <a href="#software" class="hover:text-amber">Software</a>
+        <a href="#timeline" class="hover:text-amber">Timeline</a>
+        <a href="#skills" class="hover:text-amber">Skills</a>
+      </nav>
+      <a href="/#projects" class="rounded-full bg-ink px-5 py-2 text-sm font-bold text-white shadow-sm hover:bg-coal">Back to Portfolio</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main id="home">
+    <section class="relative overflow-hidden bg-paper soft-grid">
+      <div class="absolute inset-0 bg-gradient-to-b from-white/90 via-white/80 to-paper"></div>
+      <div class="relative mx-auto grid max-w-7xl items-center gap-12 px-5 py-20 lg:grid-cols-[1.05fr_0.95fr] lg:py-28">
+        <div>
+          <div class="mb-5 inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-bold text-slate-700 shadow-sm">
+            <span class="h-2.5 w-2.5 rounded-full bg-green"></span>
+            April 2026 — Present · Ongoing Development
+          </div>
+          <h1 class="max-w-4xl text-5xl font-black leading-tight tracking-tight text-ink md:text-7xl">
+            EdgePulse <span class="text-amber">IIoT</span>
+          </h1>
+          <p class="mt-5 max-w-3xl text-2xl font-bold leading-snug text-slate-800 md:text-3xl">
+            Industrial Motor Health Monitoring & Smart PLC Control System
+          </p>
+          <p class="mt-6 max-w-3xl text-lg leading-8 text-slate-600">
+            A complete engineering prototype that connects embedded hardware, custom PCB design, PLC-style control, MQTT telemetry, a Raspberry Pi edge server, time-series storage, and a professional web dashboard to solve a real industrial machine monitoring problem.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <span class="rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-bold text-slate-700">Embedded Systems</span>
+            <span class="rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-bold text-slate-700">PCB Design</span>
+            <span class="rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-bold text-slate-700">IIoT Edge Server</span>
+            <span class="rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-bold text-slate-700">PLC-Style Control</span>
+          </div>
+          <div class="mt-10 flex flex-wrap gap-4">
+            <a href="#layers" class="rounded-xl bg-ink px-6 py-3 font-bold text-white shadow-soft hover:bg-coal">View Architecture</a>
+            <a href="#timeline" class="rounded-xl border border-slate-300 bg-white px-6 py-3 font-bold text-ink hover:border-amber hover:text-amber">Development Journey</a>
+          </div>
+        </div>
+
+        <div class="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-soft">
+          <div class="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-6">
+            <div class="flex items-center justify-between border-b border-slate-200 pb-4">
+              <div>
+                <p class="text-sm font-bold uppercase tracking-[0.25em] text-slate-500">Machine Node</p>
+                <p class="mt-1 text-2xl font-black">MOTOR_01</p>
+              </div>
+              <span class="rounded-full bg-green px-4 py-2 text-sm font-black text-white">RUNNING</span>
+            </div>
+            <div class="mt-6 grid grid-cols-2 gap-4">
+              <div class="rounded-2xl border border-slate-200 bg-white p-4">
+                <p class="text-xs font-bold uppercase tracking-wider text-slate-500">Vibration</p>
+                <p class="mt-2 text-3xl font-black">9.95</p>
+                <p class="text-sm text-slate-500">m/s²</p>
+              </div>
+              <div class="rounded-2xl border border-slate-200 bg-white p-4">
+                <p class="text-xs font-bold uppercase tracking-wider text-slate-500">Current</p>
+                <p class="mt-2 text-3xl font-black">340</p>
+                <p class="text-sm text-slate-500">mA</p>
+              </div>
+              <div class="rounded-2xl border border-slate-200 bg-white p-4">
+                <p class="text-xs font-bold uppercase tracking-wider text-slate-500">Acoustic</p>
+                <p class="mt-2 text-3xl font-black">5600</p>
+                <p class="text-sm text-slate-500">raw</p>
+              </div>
+              <div class="rounded-2xl border border-slate-200 bg-white p-4">
+                <p class="text-xs font-bold uppercase tracking-wider text-slate-500">Voltage</p>
+                <p class="mt-2 text-3xl font-black">12.05</p>
+                <p class="text-sm text-slate-500">V</p>
+              </div>
+            </div>
+            <div class="mt-6 rounded-2xl bg-ink p-5 text-white">
+              <p class="text-xs font-bold uppercase tracking-[0.2em] text-slate-300">Data Flow</p>
+              <p class="mono mt-3 text-sm leading-7 text-slate-100">Sensors → ESP32-S3 → MQTT → Raspberry Pi → InfluxDB → Dashboard</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- IMAGE MARQUEE GALLERY -->
+    <section class="py-12 bg-white border-y border-slate-200 overflow-hidden shadow-inner">
+      <div class="marquee-container gap-6 px-6">
+        <div class="flex gap-6 shrink-0 items-center">
+          <img src="/images/edgepulse/gallery/IMG_7510.jpg" class="h-64 w-auto rounded-2xl object-cover shadow-sm border border-slate-200 transition-transform hover:scale-105" alt="Hardware">
+          <img src="/images/edgepulse/gallery/IMG_7612-2.jpg" class="h-64 w-auto rounded-2xl object-cover shadow-sm border border-slate-200 transition-transform hover:scale-105" alt="Hardware">
+          <img src="/images/edgepulse/gallery/IMG_7711.jpg" class="h-64 w-auto rounded-2xl object-cover shadow-sm border border-slate-200 transition-transform hover:scale-105" alt="PCB">
+          <img src="/images/edgepulse/gallery/Screenshot 2026-06-10 223403.png" class="h-64 w-auto rounded-2xl object-cover shadow-sm border border-slate-200 transition-transform hover:scale-105" alt="Dashboard">
+          <img src="/images/edgepulse/gallery/IMG_7720.jpg" class="h-64 w-auto rounded-2xl object-cover shadow-sm border border-slate-200 transition-transform hover:scale-105" alt="PCB">
+          <img src="/images/edgepulse/gallery/Screenshot 2026-06-11 095032.png" class="h-64 w-auto rounded-2xl object-cover shadow-sm border border-slate-200 transition-transform hover:scale-105" alt="Dashboard Graph">
+          <img src="/images/edgepulse/gallery/IMG_7724.jpg" class="h-64 w-auto rounded-2xl object-cover shadow-sm border border-slate-200 transition-transform hover:scale-105" alt="Hardware">
+          <img src="/images/edgepulse/gallery/SCH_Schematic1_1-P1_2026-06-11.png" class="h-64 w-auto rounded-2xl object-cover shadow-sm border border-slate-200 transition-transform hover:scale-105" alt="Schematic">
+          <img src="/images/edgepulse/gallery/Screenshot 2026-06-10 133831.png" class="h-64 w-auto rounded-2xl object-cover shadow-sm border border-slate-200 transition-transform hover:scale-105" alt="Terminal">
+          <img src="/images/edgepulse/gallery/Screenshot 2026-06-11 095114.png" class="h-64 w-auto rounded-2xl object-cover shadow-sm border border-slate-200 transition-transform hover:scale-105" alt="Logs">
+        </div>
+        <div class="flex gap-6 shrink-0 items-center">
+          <img src="/images/edgepulse/gallery/IMG_7510.jpg" class="h-64 w-auto rounded-2xl object-cover shadow-sm border border-slate-200 transition-transform hover:scale-105" alt="Hardware">
+          <img src="/images/edgepulse/gallery/IMG_7612-2.jpg" class="h-64 w-auto rounded-2xl object-cover shadow-sm border border-slate-200 transition-transform hover:scale-105" alt="Hardware">
+          <img src="/images/edgepulse/gallery/IMG_7711.jpg" class="h-64 w-auto rounded-2xl object-cover shadow-sm border border-slate-200 transition-transform hover:scale-105" alt="PCB">
+          <img src="/images/edgepulse/gallery/Screenshot 2026-06-10 223403.png" class="h-64 w-auto rounded-2xl object-cover shadow-sm border border-slate-200 transition-transform hover:scale-105" alt="Dashboard">
+          <img src="/images/edgepulse/gallery/IMG_7720.jpg" class="h-64 w-auto rounded-2xl object-cover shadow-sm border border-slate-200 transition-transform hover:scale-105" alt="PCB">
+          <img src="/images/edgepulse/gallery/Screenshot 2026-06-11 095032.png" class="h-64 w-auto rounded-2xl object-cover shadow-sm border border-slate-200 transition-transform hover:scale-105" alt="Dashboard Graph">
+          <img src="/images/edgepulse/gallery/IMG_7724.jpg" class="h-64 w-auto rounded-2xl object-cover shadow-sm border border-slate-200 transition-transform hover:scale-105" alt="Hardware">
+          <img src="/images/edgepulse/gallery/SCH_Schematic1_1-P1_2026-06-11.png" class="h-64 w-auto rounded-2xl object-cover shadow-sm border border-slate-200 transition-transform hover:scale-105" alt="Schematic">
+          <img src="/images/edgepulse/gallery/Screenshot 2026-06-10 133831.png" class="h-64 w-auto rounded-2xl object-cover shadow-sm border border-slate-200 transition-transform hover:scale-105" alt="Terminal">
+          <img src="/images/edgepulse/gallery/Screenshot 2026-06-11 095114.png" class="h-64 w-auto rounded-2xl object-cover shadow-sm border border-slate-200 transition-transform hover:scale-105" alt="Logs">
+        </div>
+      </div>
+    </section>
+
+    <!-- IDEA -->
+    <section id="idea" class="mx-auto max-w-7xl px-5 py-20">
+      <div class="max-w-3xl">
+        <p class="text-sm font-black uppercase tracking-[0.25em] text-amber">Why this idea came</p>
+        <h2 class="mt-3 text-4xl font-black tracking-tight md:text-5xl">From a simple motor demo to an industry-style IIoT system.</h2>
+        <p class="mt-6 text-lg leading-8 text-slate-600">
+          Industrial motors, fans, pumps, and rotating machines can fail due to abnormal vibration, unusual sound, current overload, overheating, or bearing issues. In real factories, these failures can create downtime and maintenance cost. I wanted to build a realistic low-cost system that demonstrates how machine health can be monitored continuously using embedded systems and IIoT architecture.
+        </p>
+      </div>
+      <div class="mt-10 grid gap-6 lg:grid-cols-2">
+        <div class="rounded-3xl border border-slate-200 bg-white p-8 shadow-soft">
+          <h3 class="text-2xl font-black">Problem</h3>
+          <ul class="mt-5 space-y-4 text-slate-600">
+            <li class="flex gap-3"><span class="mt-2 h-2 w-2 rounded-full bg-red"></span>Manual inspection is not continuous.</li>
+            <li class="flex gap-3"><span class="mt-2 h-2 w-2 rounded-full bg-red"></span>Faults are often detected late.</li>
+            <li class="flex gap-3"><span class="mt-2 h-2 w-2 rounded-full bg-red"></span>Commercial PLC/SCADA systems are expensive for student-level prototyping.</li>
+            <li class="flex gap-3"><span class="mt-2 h-2 w-2 rounded-full bg-red"></span>Many projects stop at sensor reading and do not show a full industrial data path.</li>
+          </ul>
+        </div>
+        <div class="rounded-3xl border border-slate-200 bg-amberSoft p-8 shadow-soft">
+          <h3 class="text-2xl font-black">Solution</h3>
+          <ul class="mt-5 space-y-4 text-slate-700">
+            <li class="flex gap-3"><span class="mt-2 h-2 w-2 rounded-full bg-green"></span>Real-time vibration, acoustic, and power monitoring.</li>
+            <li class="flex gap-3"><span class="mt-2 h-2 w-2 rounded-full bg-green"></span>PLC-style motor control using Arduino and RS485.</li>
+            <li class="flex gap-3"><span class="mt-2 h-2 w-2 rounded-full bg-green"></span>ESP32-S3 intelligent edge layer with FreeRTOS.</li>
+            <li class="flex gap-3"><span class="mt-2 h-2 w-2 rounded-full bg-green"></span>Raspberry Pi edge server with MQTT, database, and dashboard.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- LAYERS -->
+    <section id="layers" class="bg-paper py-20">
+      <div class="mx-auto max-w-7xl px-5">
+        <div class="text-center">
+          <p class="text-sm font-black uppercase tracking-[0.25em] text-amber">System architecture</p>
+          <h2 class="mt-3 text-4xl font-black tracking-tight md:text-5xl">Three engineering layers working together.</h2>
+          <p class="mx-auto mt-5 max-w-3xl text-lg leading-8 text-slate-600">The system is intentionally separated into a PLC simulation layer, an intelligent embedded layer, and a Raspberry Pi edge server layer to represent a real industrial environment.</p>
+        </div>
+
+        <div class="mt-14 grid gap-16 lg:grid-cols-3 lg:gap-20">
+          <div class="flow-line relative rounded-3xl border border-slate-200 bg-white p-7 shadow-soft">
+            <p class="text-sm font-black uppercase tracking-[0.2em] text-amber">Layer 01</p>
+            <h3 class="mt-3 text-2xl font-black">PLC Simulation Layer</h3>
+            <p class="mt-4 text-slate-600">Arduino UNO controls the actuator side like a simple PLC. It receives commands and controls the fan/motor through TB6612.</p>
+            <div class="mt-6 space-y-2 text-sm font-semibold text-slate-700">
+              <p>Hardware: Arduino UNO, TB6612, INA3221</p>
+              <p>Communication: RS485 text protocol</p>
+              <p>Equivalent: PLC / actuator controller</p>
+            </div>
+          </div>
+          <div class="flow-line relative rounded-3xl border border-slate-200 bg-white p-7 shadow-soft">
+            <p class="text-sm font-black uppercase tracking-[0.2em] text-amber">Layer 02</p>
+            <h3 class="mt-3 text-2xl font-black">Intelligent Embedded Layer</h3>
+            <p class="mt-4 text-slate-600">ESP32-S3 collects vibration and acoustic data, communicates with the PLC layer, calculates health state, and sends MQTT telemetry.</p>
+            <div class="mt-6 space-y-2 text-sm font-semibold text-slate-700">
+              <p>Hardware: ESP32-S3, ADXL345, INMP441, MAX485</p>
+              <p>Firmware: C++ with FreeRTOS tasks</p>
+              <p>Equivalent: IIoT sensor gateway</p>
+            </div>
+          </div>
+          <div class="rounded-3xl border border-slate-200 bg-white p-7 shadow-soft">
+            <p class="text-sm font-black uppercase tracking-[0.2em] text-amber">Layer 03</p>
+            <h3 class="mt-3 text-2xl font-black">Raspberry Pi Server Layer</h3>
+            <p class="mt-4 text-slate-600">Raspberry Pi works as the local edge server with MQTT broker, backend API, database, Docker deployment, and dashboard.</p>
+            <div class="mt-6 space-y-2 text-sm font-semibold text-slate-700">
+              <p>Services: Mosquitto, FastAPI, InfluxDB, React</p>
+              <p>Deployment: Docker Compose</p>
+              <p>Equivalent: Edge gateway / local server</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HARDWARE -->
+    <section id="hardware" class="mx-auto max-w-7xl px-5 py-20">
+      <div class="grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
+        <div>
+          <p class="text-sm font-black uppercase tracking-[0.25em] text-amber">Hardware development</p>
+          <h2 class="mt-3 text-4xl font-black tracking-tight">From jumper testing to custom PCB design.</h2>
+          <p class="mt-6 text-lg leading-8 text-slate-600">The hardware was designed step by step. First each module was verified individually, then integrated into layers, then converted into cleaner PCB carrier designs for reliability and professional presentation.</p>
+        </div>
+        <div class="space-y-5">
+          <div class="rounded-3xl border border-slate-200 p-6 shadow-soft">
+            <h3 class="font-black">Step 1 · Machine demo selection</h3>
+            <p class="mt-2 text-slate-600">A 12V fan/motor is used as a safe rotating machine demo to simulate industrial fans, pumps, or motors.</p>
+          </div>
+          <div class="rounded-3xl border border-slate-200 p-6 shadow-soft">
+            <h3 class="font-black">Step 2 · Sensor selection</h3>
+            <p class="mt-2 text-slate-600">ADXL345 measures vibration, INMP441 monitors acoustic/noise behavior, and INA3221 measures current, voltage, and power.</p>
+          </div>
+          <div class="rounded-3xl border border-slate-200 p-6 shadow-soft">
+            <h3 class="font-black">Step 3 · PLC and intelligent boards</h3>
+            <p class="mt-2 text-slate-600">Arduino handles actuator control while ESP32-S3 handles sensor intelligence, WiFi, MQTT, and RS485 gateway functions.</p>
+          </div>
+          <div class="rounded-3xl border border-amber bg-amberSoft p-6 shadow-soft">
+            <h3 class="font-black">Step 4 · Why PCB?</h3>
+            <p class="mt-2 text-slate-700">PCB design reduces messy wiring, improves power distribution, creates clear terminal labels, adds decoupling capacitors and pull-up resistors, and makes the project presentation closer to an industrial prototype.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOFTWARE -->
+    <section id="software" class="bg-paper py-20">
+      <div class="mx-auto max-w-7xl px-5">
+        <div class="max-w-3xl">
+          <p class="text-sm font-black uppercase tracking-[0.25em] text-amber">Software architecture</p>
+          <h2 class="mt-3 text-4xl font-black tracking-tight">Real-time firmware and server-side IIoT communication.</h2>
+          <p class="mt-6 text-lg leading-8 text-slate-600">The software is designed to represent a real data and control pipeline. The PLC layer controls actuators, the ESP32 layer handles real-time edge tasks, and the Raspberry Pi layer stores and displays the data.</p>
+        </div>
+        <div class="mt-10 grid gap-6 lg:grid-cols-2">
+          <div class="rounded-3xl border border-slate-200 bg-white p-8 shadow-soft">
+            <h3 class="text-2xl font-black">ESP32-S3 FreeRTOS tasks</h3>
+            <div class="mt-6 grid gap-3 sm:grid-cols-2">
+              <p class="rounded-xl bg-slate-100 p-4 font-bold">Sensor Task</p>
+              <p class="rounded-xl bg-slate-100 p-4 font-bold">MQTT Task</p>
+              <p class="rounded-xl bg-slate-100 p-4 font-bold">RS485 Task</p>
+              <p class="rounded-xl bg-slate-100 p-4 font-bold">Health Logic Task</p>
+              <p class="rounded-xl bg-slate-100 p-4 font-bold">Command Queue</p>
+              <p class="rounded-xl bg-slate-100 p-4 font-bold">Debug Task</p>
+            </div>
+          </div>
+          <div class="rounded-3xl border border-slate-200 bg-white p-8 shadow-soft">
+            <h3 class="text-2xl font-black">Server services</h3>
+            <div class="mt-6 space-y-3">
+              <p class="rounded-xl border border-slate-200 p-4"><b>Mosquitto</b> · MQTT broker for ESP32 telemetry and commands</p>
+              <p class="rounded-xl border border-slate-200 p-4"><b>FastAPI</b> · backend API and command bridge</p>
+              <p class="rounded-xl border border-slate-200 p-4"><b>InfluxDB</b> · time-series data storage</p>
+              <p class="rounded-xl border border-slate-200 p-4"><b>React</b> · dashboard and operator interface</p>
+              <p class="rounded-xl border border-slate-200 p-4"><b>Docker</b> · containerized deployment on Raspberry Pi</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-10 rounded-3xl bg-ink p-8 text-white shadow-soft">
+          <h3 class="text-2xl font-black">Communication paths</h3>
+          <div class="mt-6 grid gap-4 lg:grid-cols-3">
+            <div class="rounded-2xl border border-white/15 p-5">
+              <p class="text-sm font-bold uppercase tracking-wider text-slate-300">Telemetry</p>
+              <p class="mono mt-3 text-sm leading-7">Sensors → ESP32 → MQTT → Pi → InfluxDB → Dashboard</p>
+            </div>
+            <div class="rounded-2xl border border-white/15 p-5">
+              <p class="text-sm font-bold uppercase tracking-wider text-slate-300">Control</p>
+              <p class="mono mt-3 text-sm leading-7">Dashboard → FastAPI → MQTT → ESP32 → RS485 → Arduino → Fan</p>
+            </div>
+            <div class="rounded-2xl border border-white/15 p-5">
+              <p class="text-sm font-bold uppercase tracking-wider text-slate-300">Feedback</p>
+              <p class="mono mt-3 text-sm leading-7">Arduino → RS485 → ESP32 → MQTT → Pi → Dashboard</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TECH STACK -->
+    <section class="mx-auto max-w-7xl px-5 py-20">
+      <p class="text-sm font-black uppercase tracking-[0.25em] text-amber">Why this tech stack</p>
+      <h2 class="mt-3 text-4xl font-black tracking-tight">Selected to match a real industrial environment.</h2>
+      <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+        <div class="rounded-3xl border border-slate-200 p-6 shadow-soft"><h3 class="font-black">C++</h3><p class="mt-2 text-sm text-slate-600">For direct hardware-level control and stable embedded firmware.</p></div>
+        <div class="rounded-3xl border border-slate-200 p-6 shadow-soft"><h3 class="font-black">FreeRTOS</h3><p class="mt-2 text-sm text-slate-600">For multitasking sensor, MQTT, RS485, and health logic functions.</p></div>
+        <div class="rounded-3xl border border-slate-200 p-6 shadow-soft"><h3 class="font-black">RS485</h3><p class="mt-2 text-sm text-slate-600">For industrial-style wired controller communication.</p></div>
+        <div class="rounded-3xl border border-slate-200 p-6 shadow-soft"><h3 class="font-black">MQTT</h3><p class="mt-2 text-sm text-slate-600">For lightweight IIoT telemetry and command messaging.</p></div>
+        <div class="rounded-3xl border border-slate-200 p-6 shadow-soft"><h3 class="font-black">Raspberry Pi</h3><p class="mt-2 text-sm text-slate-600">For local edge computing, backend, database, and dashboard.</p></div>
+        <div class="rounded-3xl border border-slate-200 p-6 shadow-soft"><h3 class="font-black">InfluxDB</h3><p class="mt-2 text-sm text-slate-600">For time-series history of sensor data and machine state.</p></div>
+        <div class="rounded-3xl border border-slate-200 p-6 shadow-soft"><h3 class="font-black">FastAPI</h3><p class="mt-2 text-sm text-slate-600">For clean backend APIs and MQTT command bridge.</p></div>
+        <div class="rounded-3xl border border-slate-200 p-6 shadow-soft"><h3 class="font-black">Docker</h3><p class="mt-2 text-sm text-slate-600">For professional deployment of server services on Raspberry Pi.</p></div>
+      </div>
+    </section>
+
+    <!-- TIMELINE -->
+    <section id="timeline" class="bg-paper py-20">
+      <div class="mx-auto max-w-7xl px-5">
+        <p class="text-sm font-black uppercase tracking-[0.25em] text-amber">Development journey</p>
+        <h2 class="mt-3 text-4xl font-black tracking-tight">April 2026 — Present</h2>
+        <div class="mt-10 grid gap-5 lg:grid-cols-2">
+          <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft"><h3 class="font-black">Project idea and planning</h3><p class="mt-2 text-slate-600">Started as an industrial predictive maintenance idea focused on motor health monitoring.</p></div>
+          <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft"><h3 class="font-black">Hardware testing</h3><p class="mt-2 text-slate-600">Tested ESP32, Arduino, RS485, motor driver, current sensor, vibration sensor, and mic sensor.</p></div>
+          <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft"><h3 class="font-black">PLC simulation</h3><p class="mt-2 text-slate-600">Arduino UNO was configured as the actuator control layer for fan speed, LED, and status feedback.</p></div>
+          <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft"><h3 class="font-black">Intelligent layer</h3><p class="mt-2 text-slate-600">ESP32-S3 integrated sensors, RS485 communication, MQTT telemetry, and FreeRTOS tasks.</p></div>
+          <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft"><h3 class="font-black">PCB design</h3><p class="mt-2 text-slate-600">Designed intelligent layer and PLC layer PCB carrier boards for cleaner hardware integration.</p></div>
+          <div class="rounded-3xl border border-amber bg-amberSoft p-6 shadow-soft"><h3 class="font-black">Server and dashboard</h3><p class="mt-2 text-slate-700">Raspberry Pi server with MQTT, FastAPI, InfluxDB, React, Docker, alerts, users, and future AI features.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="mx-auto max-w-7xl px-5 py-20">
+      <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+        <div>
+          <p class="text-sm font-black uppercase tracking-[0.25em] text-amber">What this project shows</p>
+          <h2 class="mt-3 text-4xl font-black tracking-tight">A complete hardware-to-software engineering pipeline.</h2>
+          <p class="mt-6 text-lg leading-8 text-slate-600">This project is designed to show practical engineering thinking: identifying a real problem, selecting components, designing PCBs, writing firmware, building communication layers, creating a server architecture, and visualizing data professionally.</p>
+        </div>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <p class="rounded-2xl border border-slate-200 p-4 font-bold shadow-sm">Embedded systems</p>
+          <p class="rounded-2xl border border-slate-200 p-4 font-bold shadow-sm">PCB design</p>
+          <p class="rounded-2xl border border-slate-200 p-4 font-bold shadow-sm">Sensor integration</p>
+          <p class="rounded-2xl border border-slate-200 p-4 font-bold shadow-sm">Motor control</p>
+          <p class="rounded-2xl border border-slate-200 p-4 font-bold shadow-sm">RS485 communication</p>
+          <p class="rounded-2xl border border-slate-200 p-4 font-bold shadow-sm">MQTT IIoT architecture</p>
+          <p class="rounded-2xl border border-slate-200 p-4 font-bold shadow-sm">Raspberry Pi deployment</p>
+          <p class="rounded-2xl border border-slate-200 p-4 font-bold shadow-sm">Docker containerization</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="bg-paper py-20">
+      <div class="mx-auto max-w-7xl px-5">
+        <p class="text-sm font-black uppercase tracking-[0.25em] text-amber">Project evidence</p>
+        <h2 class="mt-3 text-4xl font-black tracking-tight">Gallery placeholders for real project images.</h2>
+        <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          <div class="rounded-3xl border border-slate-200 bg-white overflow-hidden shadow-soft flex flex-col group transition-transform hover:-translate-y-1">
+            <div class="h-56 overflow-hidden bg-slate-100"><img src="/images/edgepulse/gallery/IMG_7510.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Hardware prototype"></div>
+            <div class="p-6 text-center border-t border-slate-100"><p class="font-black text-lg">Hardware prototype</p></div>
+          </div>
+          <div class="rounded-3xl border border-slate-200 bg-white overflow-hidden shadow-soft flex flex-col group transition-transform hover:-translate-y-1">
+            <div class="h-56 overflow-hidden bg-slate-100"><img src="/images/edgepulse/gallery/IMG_7711.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Intelligent layer PCB"></div>
+            <div class="p-6 text-center border-t border-slate-100"><p class="font-black text-lg">Intelligent layer PCB</p></div>
+          </div>
+          <div class="rounded-3xl border border-slate-200 bg-white overflow-hidden shadow-soft flex flex-col group transition-transform hover:-translate-y-1">
+            <div class="h-56 overflow-hidden bg-slate-100"><img src="/images/edgepulse/gallery/IMG_7718.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="PLC layer PCB"></div>
+            <div class="p-6 text-center border-t border-slate-100"><p class="font-black text-lg">PLC layer PCB</p></div>
+          </div>
+          <div class="rounded-3xl border border-slate-200 bg-white overflow-hidden shadow-soft flex flex-col group transition-transform hover:-translate-y-1">
+            <div class="h-56 overflow-hidden bg-slate-100"><img src="/images/edgepulse/gallery/Screenshot 2026-06-10 133831.png" class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110" alt="ESP32 serial monitor"></div>
+            <div class="p-6 text-center border-t border-slate-100"><p class="font-black text-lg">ESP32 serial monitor</p></div>
+          </div>
+          <div class="rounded-3xl border border-slate-200 bg-white overflow-hidden shadow-soft flex flex-col group transition-transform hover:-translate-y-1">
+            <div class="h-56 overflow-hidden bg-slate-100"><img src="/images/edgepulse/gallery/Screenshot 2026-06-10 220520.png" class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110" alt="Raspberry Pi Docker stack"></div>
+            <div class="p-6 text-center border-t border-slate-100"><p class="font-black text-lg">Raspberry Pi Docker stack</p></div>
+          </div>
+          <div class="rounded-3xl border border-slate-200 bg-white overflow-hidden shadow-soft flex flex-col group transition-transform hover:-translate-y-1">
+            <div class="h-56 overflow-hidden bg-slate-100"><img src="/images/edgepulse/gallery/Screenshot 2026-06-10 223403.png" class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110" alt="React dashboard"></div>
+            <div class="p-6 text-center border-t border-slate-100"><p class="font-black text-lg">React dashboard</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FUTURE -->
+    <section class="mx-auto max-w-7xl px-5 py-20">
+      <p class="text-sm font-black uppercase tracking-[0.25em] text-amber">Future improvements</p>
+      <h2 class="mt-3 text-4xl font-black tracking-tight">Next engineering upgrades.</h2>
+      <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+        <div class="rounded-3xl border border-slate-200 p-6 shadow-soft">True Modbus RTU register map</div>
+        <div class="rounded-3xl border border-slate-200 p-6 shadow-soft">FFT vibration analysis</div>
+        <div class="rounded-3xl border border-slate-200 p-6 shadow-soft">AI anomaly detection</div>
+        <div class="rounded-3xl border border-slate-200 p-6 shadow-soft">Grafana industrial dashboard</div>
+        <div class="rounded-3xl border border-slate-200 p-6 shadow-soft">MQTT authentication</div>
+        <div class="rounded-3xl border border-slate-200 p-6 shadow-soft">OTA firmware update</div>
+        <div class="rounded-3xl border border-slate-200 p-6 shadow-soft">Predictive reports</div>
+        <div class="rounded-3xl border border-slate-200 p-6 shadow-soft">Cloud sync option</div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer id="contact" class="border-t border-slate-200 bg-ink text-white">
+    <div class="mx-auto grid max-w-7xl gap-8 px-5 py-12 lg:grid-cols-[1fr_auto] lg:items-center">
+      <div>
+        <h2 class="text-3xl font-black">EdgePulse <span class="text-amber">IIoT</span></h2>
+        <p class="mt-3 max-w-2xl text-slate-300">Industrial Motor Health Monitoring & Smart PLC Control System · Built by Praveena Kurukuladithya · April 2026 — Present</p>
+      </div>
+      <div class="flex flex-wrap gap-3">
+        <a href="#" class="rounded-xl bg-white px-5 py-3 font-bold text-ink">GitHub</a>
+        <a href="#" class="rounded-xl border border-white/20 px-5 py-3 font-bold text-white">Demo Video</a>
+        <a href="/" class="rounded-xl border border-white/20 px-5 py-3 font-bold text-white">Portfolio</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
