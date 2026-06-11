@@ -143,6 +143,45 @@ export const projects = [
     github: 'https://github.com/pkurukuladithya',
   },
   {
+    id: 6,
+    title: 'AgroDry-Bot — IoT Paddy Drying System',
+    image: '/images/agrodry-banner.jpg',
+    pageLink: 'https://iotnv.vercel.app',
+    tech: ['ESP32', 'MQTT', 'HiveMQ', 'MongoDB', 'React', 'Node.js'],
+    shortDescription:
+      'Solar-powered IoT paddy (rice) drying monitoring system featuring real-time temperature, humidity, and moisture tracking over MQTT WebSockets.',
+    highlights: [
+      'Engineered an ESP32 edge device to read moisture, temperature, and humidity sensors every few seconds.',
+      'Configured HiveMQ Cloud to serve as a robust MQTT broker for publishing and subscribing to continuous telemetry.',
+      'Developed a Render-hosted Node.js backend to subscribe to MQTT streams and persist historical logs into MongoDB Atlas.',
+      'Built a Vercel-hosted React dashboard that connects directly to HiveMQ via WebSockets for true sub-second UI updates without page refreshes.',
+      'Implemented a "Virtual Actuator" software logic architecture allowing seamless future integration of physical relay-controlled fans and tumbler motors when moisture exceeds 14%.',
+    ],
+    github: 'https://github.com/pkurukuladithya/nv',
+    caseStudy: {
+      problem:
+        'Traditional sun-drying of paddy grain lacks real-time moisture feedback, risking spoilage from uneven drying or over-drying.',
+      solution:
+        'A full-stack IoT telemetry platform that streams live moisture data from an ESP32 directly to a React frontend via MQTT WebSockets.',
+      architecture: [
+        'ESP32 Sensor Node',
+        'HiveMQ Cloud (MQTT Broker)',
+        'Node.js Backend (Render)',
+        'MongoDB Atlas',
+        'React Dashboard (Vercel)',
+        'Direct MQTT WebSockets',
+      ],
+      skills: [
+        'Embedded C++ (ESP32)',
+        'MQTT & WebSockets',
+        'React.js',
+        'Node.js & Express',
+        'MongoDB',
+        'IoT Architecture',
+      ],
+    },
+  },
+  {
     id: 4,
     title: 'BJT Audio Amplifier Circuit',
     image: '/images/bjt-amplifier.png',
