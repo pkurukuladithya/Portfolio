@@ -130,6 +130,7 @@ export const projects = [
     id: 3,
     title: 'Autonomous Line Following, Obstacle Detection & Parking Robot',
     image: '/images/robot-car.png',
+    youtube: 'https://youtube.com/shorts/0701xXd5jrw',
     tech: ['Arduino Uno', 'AVR Assembly', 'IR Sensors', 'Ultrasonic Sensor', 'TB6612FNG', 'PWM'],
     shortDescription:
       'Autonomous embedded robot car developed using low-level AVR Assembly for line following, obstacle detection, and automatic parking.',
@@ -140,7 +141,7 @@ export const projects = [
       'Designed state-machine logic for line following, correction, parking-zone detection, and automatic parking.',
       'Used Timer0-based PWM motor speed control and ATmega328P digital I/O pins.',
     ],
-    github: 'https://github.com/pkurukuladithya',
+    github: 'https://github.com/pkurukuladithya/Line_Robot.git',
   },
   {
     id: 6,
